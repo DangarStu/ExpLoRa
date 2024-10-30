@@ -3,19 +3,26 @@
 
 #include <string>
 #include <cstdint>
+#include <unordered_map>
+
+// Value OpCodes:
+enum class OpCode {
+    Push,
+    Set
+};
 
 class Message {
     public:
         // Constructor
-        Message(std::string opCode, uint8_t device, uint8_t value);
-        Message(std::string opCode, uint8_t device, uint8_t value, uint8_t priority);
+        Message(OpCode opCode, uint8_t device, uint8_t value);
+        Message(OpCode opCode, uint8_t device, uint8_t value, uint8_t priority);
 
-        std::string toString() const;
+        char* toString() const;
     private:
-        std::string opCoode; 
+        OpCode opCode; 
         uint8_t device;
         uint8_t value;
-        uint8_t priority;
+        uint8_t priority = 1;
 };
 
 #endif // MESSAGE_H
