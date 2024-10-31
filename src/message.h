@@ -16,13 +16,14 @@ class Message {
         // Constructor
         Message(OpCode opCode, uint8_t device, uint8_t value);
         Message(OpCode opCode, uint8_t device, uint8_t value, uint8_t priority);
+        Message(char* string);
 
-        char* toString() const;
+        std::string toString() const;
     private:
         OpCode opCode; 
         uint8_t device;
         uint8_t value;
-        uint8_t priority = 1;
+        uint8_t priority = 5;
 };
 
 #endif // MESSAGE_H

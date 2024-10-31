@@ -7,8 +7,7 @@ Node::Node(
     std::string nodeName,
     CountryCode countryCode,
     char nodeRegion,
-    char nodeId,
-    bool hasWIFI) :
+    char nodeId) :
         nodeName(nodeName),
         country(countryCode),
         nodeRegion(nodeRegion),
@@ -49,5 +48,3 @@ std::string Node::getDeviceName() const {
 std::string Node::getDeviceID() const {
     return country.getCountryString();
 }
-
-

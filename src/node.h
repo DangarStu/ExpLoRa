@@ -1,9 +1,8 @@
-#ifndef DEVICE_H
-#define DEVICE_H
+#ifndef NODE_H
+#define NODE_H
 
 #include <string>
 #include <country.h>
-
 
 class Node {
 public:
@@ -32,15 +31,16 @@ public:
     // Methods to get the devices information
     std::string getDeviceName() const;
     std::string getDeviceID() const;
+    std::string toString() const;
 
     bool hasWIFI =  false;
     bool hasCANBus =  false;
 private:
     Country country;
     std::string nodeName;
-    char nodeRegion = 0;
-    char nodeId = 0;
+    char nodeRegion = '0';
+    char nodeId = '0';
 
 };
 
-#endif // DEVICE_H
+#endif // NODE_H
