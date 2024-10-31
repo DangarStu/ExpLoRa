@@ -46,5 +46,5 @@ std::string Node::getDeviceName() const {
 }
 
 std::string Node::getDeviceID() const {
-    return country.getCountryString();
+    return country.toString() + nodeRegion + nodeId;
 }

@@ -5,6 +5,7 @@
 #include <node.h>
 #include <message.h>
 #include <cstdint>
+#include <vector>
 
 class Packet {
 public:
@@ -14,13 +15,13 @@ public:
 
     // Method to get the two-letter country code as a string
     std::string toString();
-    void addMessage(Message message);
+    void addMessage(const Message& message);
 
 private:
     Node from;
     Node to;
-    uint8_t messageCount = 0;
-    Message *payload[50];
+    uint8_t payloadSize = 0;
+    std::vector<Message> payload;
     uint8_t ttl = 5;
 };
 

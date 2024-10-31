@@ -31,7 +31,6 @@ public:
     // Methods to get the devices information
     std::string getDeviceName() const;
     std::string getDeviceID() const;
-    std::string toString() const;
 
     bool hasWIFI =  false;
     bool hasCANBus =  false;

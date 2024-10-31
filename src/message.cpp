@@ -35,6 +35,6 @@ std::string Message::toString() const {
     // Buffer to build the C-style string into
     char buffer[12];
 
-    sprintf(buffer, "%s,%u,%u,%u:", opCodeToString(opCode).c_str(), device, value, priority);
+    sprintf(buffer, "%s,%u,%u,%u", opCodeToString(opCode).c_str(), device, value, priority);
     return std::string(buffer);
 }

@@ -81,29 +81,40 @@ void loop() {
   if ((PAUSE && tx_legal && millis() - last_tx > (PAUSE * 1000))) {
     // In case of button click, tell user to wait
     if (!tx_legal) {
-      both.printf("Legal limit, wait %i sec.\n", (int)((minimum_pause - (millis() - last_tx)) / 1000) + 1);
+      Serial.printf("Legal limit, wait %i sec.\n", (int)((minimum_pause - (millis() - last_tx)) / 1000) + 1);
       return;
     }
 
     // Who are we sending this packet to?
     Node recipient = Node("Base", CountryCode::AU, 'A', '1');
+    Serial.printf("FROM: %s\n", me.getDeviceID().c_str());
+    Serial.printf("TO: %s\n", recipient.getDeviceID().c_str());
+
     Packet packet = Packet(me, recipient);
 
-    // Create the data we are sending
-    Message data1 = Message(OpCode::Push, 4, 1, 5);
+    // Create two message to add to the current paket
+    Message data1 = Message(OpCode::Push, 0, 1, 5);
+    Serial.printf("MESSAGE: %s\n", data1.toString().c_str());
     packet.addMessage(data1);
 
-    both.println(packet.toString().c_str());
+    Message data2 = Message(OpCode::Push, 1, 240, 5);
+    Serial.printf("MESSAGE: %s\n", data1.toString().c_str());
+    packet.addMessage(data2);
+
+    // Display the current packet about to be sent.
+    Serial.println("PACKET:");
+    both.printf("TX: %s\n", packet.toString().c_str());
 
     radio.clearDio1Action();
+
     heltec_led(50); // 50% brightness is plenty for this LED
     tx_time = millis();
     RADIOLIB(radio.transmit(packet.toString().c_str()));
     tx_time = millis() - tx_time;
     heltec_led(0);
-    if (_radiolib_status == RADIOLIB_ERR_NONE) {
-      // both.printf("OK (%i ms)\n", (int)tx_time);
-    } else {
+
+    // Check if transmission of packet succeeded
+    if (_radiolib_status != RADIOLIB_ERR_NONE) {
       both.printf("fail (%i)\n", _radiolib_status);
     }
     // Maximum 1% duty cycle

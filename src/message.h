@@ -16,7 +16,6 @@ class Message {
         // Constructor
         Message(OpCode opCode, uint8_t device, uint8_t value);
         Message(OpCode opCode, uint8_t device, uint8_t value, uint8_t priority);
-        Message(char* string);
 
         std::string toString() const;
     private:

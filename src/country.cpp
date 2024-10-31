@@ -6,8 +6,8 @@
 Country::Country(CountryCode countryCode) : countryCode(countryCode) {}
 
 // Method to get the two-character string representation
-std::string Country::getCountryString() const {
-    switch (Country::countryCode) {
+std::string Country::toString() const {
+    switch (countryCode) {
         case CountryCode::AF: return "AF";
         case CountryCode::AL: return "AL";
         case CountryCode::DZ: return "DZ";
@@ -40,11 +40,6 @@ std::string Country::getCountryString() const {
         case CountryCode::VN: return "VN";
         default: return "Unknown";
     }
-}
-
-// Method to get the ISO 3166-1 numeric code
-uint16_t Country::getCountryNumericCode() const {
-    return static_cast<uint16_t>(countryCode);
 }
 
 

@@ -43,8 +43,7 @@ public:
     Country(CountryCode code);
 
     // Method to get the two-letter country code as a string
-    std::string getCountryString() const;
-    uint16_t getCountryNumericCode() const;
+    std::string toString() const;
 
 private:
     CountryCode countryCode;
