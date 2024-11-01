@@ -86,7 +86,7 @@ void loop() {
     }
 
     // Who are we sending this packet to?
-    Node recipient = Node("Base", CountryCode::AU, 'A', '1');
+    Node recipient = Node("Base", CountryCode::AU, 'A', '0');
     Serial.printf("FROM: %s\n", me.getDeviceID().c_str());
     Serial.printf("TO: %s\n", recipient.getDeviceID().c_str());
 

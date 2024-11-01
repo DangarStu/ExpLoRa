@@ -20,7 +20,6 @@ public:
 private:
     Node from;
     Node to;
-    uint8_t payloadSize = 0;
     std::vector<Message> payload;
     uint8_t ttl = 5;
 };
