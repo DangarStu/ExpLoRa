@@ -92,7 +92,7 @@ void loop() {
 
     Packet packet = Packet(me, recipient);
 
-    // Create two message to add to the current paket
+    // Create two messages to add to the current paket
     Message data1 = Message(OpCode::Push, 0, 1, 5);
     Serial.printf("MESSAGE: %s\n", data1.toString().c_str());
     packet.addMessage(data1);
